@@ -1,0 +1,385 @@
+{#- ==========================================================================
+    Szablon strony-wizytówki (PL + EN). Teksty są w docs/index.md i docs/en/index.md,
+    dane kontaktowe i stawki w mkdocs.yml → extra. Tego pliku nie trzeba edytować.
+    ========================================================================== -#}
+{%- set m = page.meta -%}
+{%- set ui = m.ui -%}
+{%- set c = config.extra.contact -%}
+{%- set r = config.extra.rates -%}
+{%- set home = ('./' if m.lang == 'pl' else '../') -%}
+{%- set mailto = 'mailto:' ~ c.email ~ '?subject=' ~ (m.mail.subject | urlencode) ~ '&body=' ~ (m.mail.body | replace('\n', '\r\n') | urlencode) -%}
+{%- macro icon(name) -%}{% include ".icons/material/" ~ name ~ ".svg" %}{%- endmacro -%}
+<!doctype html>
+<html lang="{{ m.lang }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>{{ m.title }}</title>
+  <meta name="description" content="{{ m.description }}">
+  <meta name="author" content="{{ c.name }}">
+  {%- if page.canonical_url %}
+  <link rel="canonical" href="{{ page.canonical_url }}">
+  {%- endif %}
+  {%- for alt in config.extra.alternate %}
+  <link rel="alternate" hreflang="{{ alt.lang }}" href="{{ config.site_url | trim('/') }}{{ alt.link }}">
+  {%- endfor %}
+  <link rel="alternate" hreflang="x-default" href="{{ config.site_url }}">
+  <meta name="theme-color" content="#f8f6f1" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0d111a" media="(prefers-color-scheme: dark)">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="{{ home }}assets/img/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="{{ home }}assets/img/apple-touch-icon.png">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{{ m.title }}">
+  <meta property="og:description" content="{{ m.description }}">
+  <meta property="og:url" content="{{ page.canonical_url }}">
+  <meta property="og:image" content="{{ config.site_url }}assets/img/og-{{ m.lang }}.png">
+  <meta property="og:locale" content="{{ 'pl_PL' if m.lang == 'pl' else 'en_GB' }}">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preload" href="{{ home }}assets/fonts/fraunces-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="{{ home }}assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="{{ home }}assets/css/site.css">
+  <script>document.documentElement.classList.add('js')</script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "{{ c.name }} — {{ ui.role }}",
+    "url": "{{ config.site_url }}",
+    "image": "{{ config.site_url }}assets/img/og-{{ m.lang }}.png",
+    "email": "{{ c.email }}",
+    "telephone": "{{ c.phone_link }}",
+    "address": { "@type": "PostalAddress", "addressLocality": "{{ c.city }}", "addressCountry": "PL" },
+    "areaServed": ["PL", "Worldwide"],
+    "knowsLanguage": ["pl", "en"],
+    "founder": { "@type": "Person", "name": "{{ c.name }}", "jobTitle": "{{ ui.role }}" }{% if c.linkedin %},
+    "sameAs": ["{{ c.linkedin }}"]{% endif %}
+  }
+  </script>
+</head>
+
+<body>
+<a class="skip" href="#main">{{ ui.skip }}</a>
+
+<!-- ============================ NAGŁÓWEK ============================ -->
+<header class="site-header" data-header>
+  <div class="container header-inner">
+    <a class="brand" href="#top" aria-label="{{ c.name }} — {{ ui.role }}">
+      <img class="brand-mark" src="{{ home }}assets/img/apple-touch-icon.png" alt="" width="42" height="42">
+      <span class="brand-text">
+        <strong>{{ c.name }}</strong>
+        <small>{{ ui.role }}</small>
+      </span>
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Menu" data-nav>
+      <ul>
+        {%- for item in ui.nav %}
+        <li><a href="{{ item.href }}">{{ item.label }}</a></li>
+        {%- endfor %}
+      </ul>
+      <a class="btn btn-primary nav-cta-mobile" href="#kontakt">{{ ui.cta }}</a>
+    </nav>
+
+    <div class="header-actions">
+      <a class="lang-switch" href="{{ ui.switch_to }}" hreflang="{{ 'en' if m.lang == 'pl' else 'pl' }}" title="{{ ui.switch_title }}" lang="{{ 'en' if m.lang == 'pl' else 'pl' }}">
+        {{ icon('translate') }}<span>{{ ui.switch_label }}</span>
+      </a>
+      <a class="btn btn-primary header-cta" href="#kontakt">{{ ui.cta }}</a>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav" data-menu-btn>
+        <span class="menu-lines" aria-hidden="true"><i></i><i></i></span>
+        <span class="sr-only">{{ ui.menu }}</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============================ HERO ============================ -->
+<section class="hero" id="top">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">{{ icon('map-marker-outline') }}{{ m.hero.eyebrow }}</p>
+      <h1>{{ m.hero.title }}</h1>
+      <p class="lead">{{ m.hero.lead }}</p>
+      <div class="hero-ctas" data-hero-ctas>
+        <a class="btn btn-primary btn-lg" href="{{ mailto }}">{{ icon('file-upload-outline') }}{{ m.hero.primary }}</a>
+        <a class="btn btn-ghost btn-lg" href="tel:{{ c.phone_link }}">{{ icon('phone-outline') }}{{ m.hero.secondary }}</a>
+      </div>
+      <ul class="badges">
+        {%- for b in m.hero.badges %}
+        <li>{{ icon('check-circle-outline') }}{{ b }}</li>
+        {%- endfor %}
+      </ul>
+    </div>
+
+    <figure class="tcard reveal" data-samples aria-label="{{ m.hero.card_label }}">
+      <div class="tcard-head">
+        <span class="tcard-label">{{ m.hero.card_label }}</span>
+        <span class="tcard-tag" data-sample-tag>{{ m.hero.samples[0].tag }}</span>
+      </div>
+      <div class="tcard-body">
+        <div class="tline">
+          <span class="lang-pill">EN</span>
+          <p lang="en" data-sample-en>{{ m.hero.samples[0].en }}</p>
+        </div>
+        <div class="tswap" aria-hidden="true">{{ icon('swap-horizontal') }}</div>
+        <div class="tline tline-pl">
+          <span class="lang-pill lang-pill-accent">PL</span>
+          <p lang="pl" data-sample-pl>{{ m.hero.samples[0].pl }}</p>
+        </div>
+      </div>
+      <div class="tcard-dots" role="tablist">
+        {%- for s in m.hero.samples %}
+        <button type="button" role="tab" aria-label="{{ s.tag }}" aria-selected="{{ 'true' if loop.first else 'false' }}"
+          data-tag="{{ s.tag }}" data-en="{{ s.en }}" data-pl="{{ s.pl }}"></button>
+        {%- endfor %}
+      </div>
+    </figure>
+  </div>
+
+  <div class="container">
+    <ul class="facts">
+      {%- for f in m.facts %}
+      <li class="reveal">
+        <strong><span data-count="{{ f.value }}">{{ f.value }}</span>{{ f.suffix }}</strong>
+        <span>{{ f.label }}</span>
+      </li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>
+
+<!-- ============================ SPECJALIZACJE ============================ -->
+<section class="section" id="specjalizacje">
+  <div class="container">
+    <header class="section-head reveal">
+      <p class="kicker">{{ m.services.kicker }}</p>
+      <h2>{{ m.services.title }}</h2>
+      <p class="section-intro">{{ m.services.intro }}</p>
+    </header>
+    <div class="cards">
+      {%- for s in m.services["items"] %}
+      <article class="card reveal">
+        <span class="card-icon">{{ icon(s.icon) }}</span>
+        <h3>{{ s.title }}</h3>
+        <p>{{ s.text }}</p>
+        <ul class="tags">{% for t in s.tags %}<li>{{ t }}</li>{% endfor %}</ul>
+      </article>
+      {%- endfor %}
+    </div>
+    <p class="more reveal">{{ m.services.more }}</p>
+  </div>
+</section>
+
+<!-- ============================ O MNIE ============================ -->
+<section class="section section-alt" id="o-mnie">
+  <div class="container about-grid">
+    <aside class="profile reveal">
+      <div class="portrait">
+        {%- if c.photo %}
+        <img src="{{ home }}{{ c.photo }}" alt="{{ m.about.photo_alt }}" width="480" height="560" loading="lazy">
+        {%- else %}
+        <span class="portrait-mono" aria-hidden="true">”</span>
+        {%- endif %}
+      </div>
+      <div class="profile-meta">
+        <strong>{{ c.name }}</strong>
+        <span>{{ ui.role }}</span>
+        <div class="profile-langs"><span>EN</span>{{ icon('swap-horizontal') }}<span>PL</span></div>
+      </div>
+    </aside>
+    <div class="about-copy">
+      <header class="section-head section-head-left reveal">
+        <p class="kicker">{{ m.about.kicker }}</p>
+        <h2>{{ m.about.title }}</h2>
+      </header>
+      <div class="prose reveal">{{ page.content }}</div>
+      <ul class="points">
+        {%- for p in m.about.points %}
+        <li class="reveal">
+          <span class="point-icon">{{ icon(p.icon) }}</span>
+          <div><strong>{{ p.title }}</strong><p>{{ p.text }}</p></div>
+        </li>
+        {%- endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ JAK PRACUJĘ ============================ -->
+<section class="section" id="jak-pracuje">
+  <div class="container">
+    <header class="section-head reveal">
+      <p class="kicker">{{ m.process.kicker }}</p>
+      <h2>{{ m.process.title }}</h2>
+    </header>
+    <ol class="steps">
+      {%- for s in m.process.steps %}
+      <li class="reveal">
+        <span class="step-no">{{ loop.index }}</span>
+        <h3>{{ s.title }}</h3>
+        <p>{{ s.text }}</p>
+      </li>
+      {%- endfor %}
+    </ol>
+  </div>
+</section>
+
+<!-- ============================ CENNIK ============================ -->
+<section class="section section-alt" id="cennik">
+  <div class="container">
+    <header class="section-head reveal">
+      <p class="kicker">{{ m.pricing.kicker }}</p>
+      <h2>{{ m.pricing.title }}</h2>
+      <p class="section-intro">{{ m.pricing.intro }}</p>
+    </header>
+
+    <div class="prices">
+      {%- for p in m.pricing.cards %}
+      <article class="price reveal{% if p.featured %} price-featured{% endif %}">
+        <h3>{{ p.title }}</h3>
+        <p class="price-value"><small>{{ m.pricing.from }}</small> <strong>{{ r[p.key] }}</strong> <span>{{ m.currency }} {{ m.pricing.per }}</span></p>
+        <p>{{ p.text }}</p>
+      </article>
+      {%- endfor %}
+    </div>
+    <p class="price-notes reveal">
+      <span>{{ icon('lightning-bolt-outline') }}{{ m.pricing.express | replace('{express}', r.express | string) }}</span>
+      <span>{{ icon('file-document-multiple-outline') }}{{ m.pricing.minimum | replace('{minimum}', r.minimum | string) }}</span>
+    </p>
+
+    <!-- Kalkulator -->
+    <div class="calc reveal" data-calc
+         data-rate-en_pl="{{ r.en_pl }}" data-rate-pl_en="{{ r.pl_en }}" data-rate-proofreading="{{ r.proofreading }}"
+         data-express="{{ r.express }}" data-minimum="{{ r.minimum }}" data-currency="{{ m.currency }}" data-lang="{{ m.lang }}">
+      <div class="calc-form">
+        <h3>{{ icon('calculator-variant-outline') }}{{ m.pricing.calc.title }}</h3>
+        <p class="muted">{{ m.pricing.calc.lead }}</p>
+
+        <fieldset class="seg">
+          <legend class="sr-only">{{ m.pricing.calc.direction }}</legend>
+          {%- for p in m.pricing.cards %}
+          <label><input type="radio" name="calc-dir" value="{{ p.key }}" {% if loop.first %}checked{% endif %}><span>{{ p.title }}</span></label>
+          {%- endfor %}
+        </fieldset>
+
+        <label class="field">
+          <span>{{ m.pricing.calc.paste }}</span>
+          <textarea rows="4" placeholder="{{ m.pricing.calc.paste_ph }}" data-calc-text></textarea>
+        </label>
+        <div class="field-row">
+          <span class="or"><span>{{ m.pricing.calc["or"] }}</span></span>
+          <label class="field field-inline">
+            <span>{{ m.pricing.calc.pages }}</span>
+            <input type="number" inputmode="decimal" min="0" step="0.5" value="1" data-calc-pages>
+          </label>
+        </div>
+        <label class="check"><input type="checkbox" data-calc-express><span>{{ m.pricing.calc.express }} (+{{ r.express }}%)</span></label>
+      </div>
+      <div class="calc-result" aria-live="polite">
+        <span class="muted">{{ m.pricing.calc.result }}</span>
+        <output data-calc-out>—</output>
+        <span class="calc-meta" data-calc-meta data-chars="{{ m.pricing.calc.chars }}" data-pages-unit="{{ m.pricing.calc.pages_unit }}"></span>
+        <a class="btn btn-primary" href="{{ mailto }}">{{ m.pricing.calc.cta }}{{ icon('arrow-right') }}</a>
+        <small class="muted calc-privacy">{{ icon('shield-lock-outline') }}{{ m.pricing.calc.privacy }}</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FAQ ============================ -->
+<section class="section" id="faq">
+  <div class="container faq-grid">
+    <header class="section-head section-head-left reveal">
+      <p class="kicker">{{ m.faq.kicker }}</p>
+      <h2>{{ m.faq.title }}</h2>
+      <div class="faq-cta">
+        <p>{{ m.faq.cta }}</p>
+        <div>
+          <a class="btn btn-primary" href="{{ mailto }}">{{ icon('email-outline') }}{{ ui.write }}</a>
+          <a class="btn btn-ghost" href="tel:{{ c.phone_link }}">{{ icon('phone-outline') }}{{ ui.call }}</a>
+        </div>
+      </div>
+    </header>
+    <div class="faq">
+      {%- for f in m.faq["items"] %}
+      <details class="reveal"{% if loop.first %} open{% endif %}>
+        <summary>{{ f.q }}{{ icon('chevron-down') }}</summary>
+        <p>{{ f.a }}</p>
+      </details>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ============================ KONTAKT ============================ -->
+<section class="section contact" id="kontakt" data-contact>
+  <div class="container">
+    <header class="section-head reveal">
+      <p class="kicker">{{ m.contact.kicker }}</p>
+      <h2>{{ m.contact.title }}</h2>
+      <p class="section-intro">{{ m.contact.lead }}</p>
+    </header>
+
+    <div class="contact-tiles">
+      <div class="tile reveal">
+        <span class="tile-icon">{{ icon('email-outline') }}</span>
+        <span class="tile-label">{{ m.contact.email_label }}</span>
+        <a class="tile-value" href="{{ mailto }}">{{ c.email }}</a>
+        <button class="tile-copy" type="button" data-copy="{{ c.email }}">{{ icon('content-copy') }}{{ m.contact['copy'] }}</button>
+      </div>
+      <div class="tile reveal">
+        <span class="tile-icon">{{ icon('phone-outline') }}</span>
+        <span class="tile-label">{{ m.contact.phone_label }}</span>
+        <a class="tile-value" href="tel:{{ c.phone_link }}">{{ c.phone }}</a>
+        <span class="tile-note">{{ m.contact.hours }}</span>
+      </div>
+      <div class="tile reveal">
+        <span class="tile-icon">{{ icon('card-account-details-outline') }}</span>
+        <span class="tile-label">vCard</span>
+        <a class="tile-value tile-value-sm" href="{{ home }}kontakt.vcf" download>{{ m.contact.vcard }}</a>
+        <span class="tile-note">{{ m.contact.location }}</span>
+      </div>
+    </div>
+
+    <div class="contact-cta reveal">
+      <a class="btn btn-light btn-lg" href="{{ mailto }}">{{ icon('file-upload-outline') }}{{ m.hero.primary }}</a>
+      <a class="btn btn-outline-light btn-lg" href="tel:{{ c.phone_link }}">{{ icon('phone-outline') }}{{ m.hero.secondary }}</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============================ STOPKA ============================ -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div>
+      <strong>{{ c.name }}</strong> · {{ m.footer.tagline }} · {{ c.city }}
+      {%- if c.nip %}<br><span class="muted">{{ m.footer.nip }}: {{ c.nip }}</span>{% endif %}
+    </div>
+    <div class="footer-links">
+      {%- if c.linkedin %}<a href="{{ c.linkedin }}" rel="noopener">LinkedIn</a>{% endif %}
+      <a href="{{ ui.switch_to }}" lang="{{ 'en' if m.lang == 'pl' else 'pl' }}">{{ ui.switch_title }}</a>
+      <a href="#top">{{ m.footer.top }} ↑</a>
+    </div>
+    <p class="copy">© {{ build_date_utc.strftime('%Y') }} {{ c.name }}</p>
+  </div>
+</footer>
+
+<!-- Pasek szybkich akcji na telefonie -->
+<div class="actionbar" data-actionbar aria-hidden="true">
+  <a class="btn btn-ghost" href="tel:{{ c.phone_link }}" tabindex="-1">{{ icon('phone-outline') }}{{ ui.call }}</a>
+  <a class="btn btn-primary" href="{{ mailto }}" tabindex="-1">{{ icon('email-outline') }}{{ ui.write }}</a>
+</div>
+
+<div class="toast" role="status" aria-live="polite" data-toast>{{ ui.copied }}</div>
+
+<script src="{{ home }}assets/js/site.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+# =====================================================================
+#  Strona-wizytówka: Piotr Lewandowski — tłumacz języka angielskiego
+#  Material for MkDocs + GitHub Pages + Cloudflare (DNS) + Viperhost (domena)
+# ---------------------------------------------------------------------
+#  NAJWAŻNIEJSZE: dane kontaktowe i stawki zmieniasz TYLKO w sekcji
+#  "extra:" poniżej. Teksty strony są w plikach:
+#     docs/index.md      (wersja polska)
+#     docs/en/index.md   (wersja angielska)
+# =====================================================================
+
+site_name: Piotr Lewandowski — tłumacz języka angielskiego
+site_url: https://angielskitlumacz.pl/
+site_author: Piotr Lewandowski
+site_description: >-
+  Tłumacz języka angielskiego z 20-letnim doświadczeniem. Umowy, dokumenty
+  podatkowe i finansowe, tłumaczenia handlowe i biznesowe, prace naukowe.
+
+theme:
+  name: material
+  custom_dir: overrides
+  language: pl
+  font: false                 # czcionki są w repozytorium (bez Google Fonts = zgodnie z RODO)
+  favicon: assets/img/favicon.png
+  palette:
+    scheme: default
+    primary: indigo
+    accent: deep orange
+
+plugins: []                   # wyłączona wyszukiwarka (niepotrzebna na wizytówce)
+
+hooks:
+  - hooks/vcard.py            # generuje plik "zapisz kontakt" (.vcf) z danych poniżej
+
+markdown_extensions:
+  - attr_list
+  - md_in_html
+
+extra:
+  # ---------------- DANE KONTAKTOWE (wspólne dla PL i EN) ----------------
+  contact:
+    name: Piotr Lewandowski
+    email: kontakt@angielskitlumacz.pl    # adres przekierowany przez Cloudflare Email Routing na Twój Gmail
+    phone: "+48 600 000 000"             # <-- ZMIEŃ (tak, jak ma się wyświetlać)
+    phone_link: "+48600000000"           # <-- ZMIEŃ (ten sam numer, bez spacji)
+    city: Łódź
+    nip: ""                              # opcjonalnie, np. "725-000-00-00" — pusty = nie pokazuje się
+    linkedin: ""                         # opcjonalnie, pełny link do profilu LinkedIn
+    photo: ""                            # opcjonalnie: wrzuć zdjęcie do docs/assets/img/ i wpisz np. "assets/img/piotr.jpg"
+
+  # ---------------- ORIENTACYJNE STAWKI (zł za stronę 1800 znaków) --------
+  rates:
+    en_pl: 45          # angielski → polski         <-- ZMIEŃ na swoje
+    pl_en: 55          # polski → angielski         <-- ZMIEŃ na swoje
+    proofreading: 25   # korekta / weryfikacja       <-- ZMIEŃ na swoje
+    express: 50        # dopłata za tryb ekspresowy, w %
+    minimum: 1         # minimalne zamówienie, w stronach rozliczeniowych
+
+  # ---------------- Przełącznik języka ----------------
+  alternate:
+    - name: Polski
+      link: /
+      lang: pl
+    - name: English
+      link: /en/
+      lang: en
+
+nav:
+  - Start: index.md
+  - English: en/index.md
