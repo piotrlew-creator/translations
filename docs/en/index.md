@@ -53,20 +53,6 @@ hero:
     - Free quote
     - Invoice
     - Confidentiality (NDA)
-  card_label: Examples from practice
-  samples:
-    - tag: Contract
-      en: "This Agreement shall enter into force on the date of its signature by both Parties."
-      pl: "Umowa wchodzi w życie z dniem jej podpisania przez obie Strony."
-    - tag: Tax
-      en: "The taxpayer is entitled to deduct input VAT within the statutory time limit."
-      pl: "Podatnikowi przysługuje prawo do odliczenia podatku naliczonego w ustawowym terminie."
-    - tag: Academic
-      en: "The results indicate a statistically significant correlation between the variables."
-      pl: "Wyniki wskazują na istotną statystycznie korelację między zmiennymi."
-    - tag: Business
-      en: "We look forward to a long and mutually beneficial partnership."
-      pl: "Liczymy na długą i obopólnie korzystną współpracę."
 
 facts:
   - { value: "20", suffix: "+", label: "years of translation experience" }

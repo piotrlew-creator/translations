@@ -77,33 +77,6 @@
     $$("[data-count]").forEach(function (el) { co.observe(el); });
   }
 
-  /* --- Karta z przykładami tłumaczeń --- */
-  var card = $("[data-samples]");
-  if (card) {
-    var dots = $$(".tcard-dots button", card), idx = 0, timer = null, paused = false;
-    var enEl = $("[data-sample-en]", card), plEl = $("[data-sample-pl]", card), tagEl = $("[data-sample-tag]", card);
-    var show = function (i) {
-      idx = (i + dots.length) % dots.length;
-      var d = dots[idx];
-      dots.forEach(function (b, j) { b.setAttribute("aria-selected", j === idx ? "true" : "false"); });
-      var swap = function () {
-        enEl.textContent = d.getAttribute("data-en");
-        plEl.textContent = d.getAttribute("data-pl");
-        tagEl.textContent = d.getAttribute("data-tag");
-        card.classList.remove("is-switching");
-      };
-      if (reduce) { swap(); return; }
-      card.classList.add("is-switching");
-      setTimeout(swap, 320);
-    };
-    var start = function () { if (reduce || dots.length < 2) return; stop(); timer = setInterval(function () { if (!paused && !document.hidden) show(idx + 1); }, 5200); };
-    var stop = function () { if (timer) clearInterval(timer); };
-    dots.forEach(function (b, i) { b.addEventListener("click", function () { show(i); start(); }); });
-    card.addEventListener("mouseenter", function () { paused = true; });
-    card.addEventListener("mouseleave", function () { paused = false; });
-    start();
-  }
-
   /* --- Kalkulator --- */
   var calc = $("[data-calc]");
   if (calc) {
