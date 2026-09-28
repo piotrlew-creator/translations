@@ -9,6 +9,8 @@
 {%- set home = ('./' if m.lang == 'pl' else '../') -%}
 {%- set other = ('en' if m.lang == 'pl' else 'pl') -%}
 {%- set mailto = 'mailto:' ~ c.email ~ '?subject=' ~ (m.mail.subject | urlencode) ~ '&body=' ~ (m.mail.body | replace('\n', '\r\n') | urlencode) -%}
+{%- set mailto_b2b = 'mailto:' ~ c.email ~ '?subject=' ~ (m.b2b.mail_subject | urlencode) ~ '&body=' ~ (m.b2b.mail_body | replace('\n', '\r\n') | urlencode) -%}
+{%- set wa = 'https://wa.me/' ~ c.whatsapp ~ '?text=' ~ (m.card.wa_text | urlencode) -%}
 {%- macro icon(name) -%}{% include ".icons/material/" ~ name ~ ".svg" %}{%- endmacro -%}
 {%- macro avatar(cls) -%}
   <span class="{{ cls }}" aria-hidden="true">
@@ -126,6 +128,7 @@
         </div>
       </div>
       <a class="btn btn-primary btn-lg btn-block" href="{{ mailto }}" data-hero-ctas>{{ icon('file-upload-outline') }}{{ m.hero.primary }}</a>
+      <p class="qpromise">{{ icon('timer-outline') }}<span>{{ m.card.promise }}</span></p>
       <ul class="qlist">
         <li>
           <a class="qrow" href="tel:{{ c.phone_link }}">
@@ -133,6 +136,14 @@
             <span class="qtext"><strong>{{ c.phone }}</strong><small>{{ m.card.phone_note }}</small></span>
           </a>
         </li>
+        {%- if c.whatsapp %}
+        <li>
+          <a class="qrow qrow-wa" href="{{ wa }}" target="_blank" rel="noopener">
+            <span class="qicon qicon-wa">{{ icon('whatsapp') }}</span>
+            <span class="qtext"><strong>WhatsApp</strong><small>{{ m.card.wa_note }}</small></span>
+          </a>
+        </li>
+        {%- endif %}
         <li>
           <a class="qrow" href="{{ mailto }}">
             <span class="qicon">{{ icon('email-outline') }}</span>
@@ -185,10 +196,12 @@
       <div class="price">
         <span class="price-name">{{ p.title }}</span>
         <span class="price-value"><small>{{ m.pricing.from }}</small> <strong>{{ r[p.key] }}</strong> <small>{{ m.currency }} {{ m.pricing.per }}</small></span>
+        {%- if p.text %}<span class="price-text">{{ p.text }}</span>{% endif %}
       </div>
       {%- endfor %}
     </div>
     <p class="price-notes reveal">
+      <span>{{ icon('timer-outline') }}{{ m.pricing.turnaround }}</span>
       <span>{{ icon('lightning-bolt-outline') }}{{ m.pricing.express | replace('{express}', r.express | string) }}</span>
       <span>{{ icon('file-document-multiple-outline') }}{{ m.pricing.minimum | replace('{minimum}', r.minimum | string) }}</span>
     </p>
@@ -198,7 +211,7 @@
       <summary>{{ icon('calculator-variant-outline') }}<span>{{ m.pricing.calc.summary }}</span>{{ icon('chevron-down') }}</summary>
       <div class="calc" data-calc
            data-rate-en_pl="{{ r.en_pl }}" data-rate-pl_en="{{ r.pl_en }}" data-rate-proofreading="{{ r.proofreading }}"
-           data-express="{{ r.express }}" data-minimum="{{ r.minimum }}" data-currency="{{ m.currency }}" data-lang="{{ m.lang }}">
+           data-express="{{ r.express }}" data-minimum="{{ r.minimum }}" data-vat="{{ r.vat }}" data-currency="{{ m.currency }}" data-lang="{{ m.lang }}">
         <div class="calc-form">
           <fieldset class="seg">
             <legend class="sr-only">{{ m.pricing.calc.direction }}</legend>
@@ -221,7 +234,8 @@
         </div>
         <div class="calc-result" aria-live="polite">
           <span class="muted">{{ m.pricing.calc.result }}</span>
-          <output data-calc-out>—</output>
+          <output data-calc-out data-net="{{ m.pricing.calc.net }}">—</output>
+          <span class="calc-gross" data-calc-gross data-gross="{{ m.pricing.calc.gross }}"></span>
           <span class="calc-meta" data-calc-meta data-chars="{{ m.pricing.calc.chars }}" data-pages-unit="{{ m.pricing.calc.pages_unit }}"></span>
           <a class="btn btn-primary" href="{{ mailto }}">{{ m.pricing.calc.cta }}{{ icon('arrow-right') }}</a>
           <small class="muted calc-privacy">{{ icon('shield-lock-outline') }}{{ m.pricing.calc.privacy }}</small>
@@ -241,8 +255,31 @@
   </div>
 </section>
 
+<!-- ============================ STAŁA WSPÓŁPRACA DLA FIRM ============================ -->
+<section class="section" id="dla-firm">
+  <div class="container">
+    <div class="b2b reveal">
+      <div class="b2b-copy">
+        <p class="kicker">{{ m.b2b.kicker }}</p>
+        <h2>{{ m.b2b.title }}</h2>
+        <p class="b2b-intro">{{ m.b2b.intro }}</p>
+        <a class="btn btn-light btn-lg" href="{{ mailto_b2b }}">{{ icon('handshake-outline') }}{{ m.b2b.cta }}</a>
+        <small class="b2b-note">{{ m.b2b.note }}</small>
+      </div>
+      <ul class="b2b-list">
+        {%- for p in m.b2b["items"] %}
+        <li>
+          <span class="b2b-icon">{{ icon(p.icon) }}</span>
+          <div><strong>{{ p.title }}</strong><p>{{ p.text }}</p></div>
+        </li>
+        {%- endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+
 <!-- ============================ O MNIE ============================ -->
-<section class="section" id="o-mnie">
+<section class="section section-alt" id="o-mnie">
   <div class="container about-grid">
     <div class="about-copy">
       <header class="section-head section-head-left reveal">
@@ -263,7 +300,7 @@
 </section>
 
 <!-- ============================ FAQ ============================ -->
-<section class="section section-alt" id="faq">
+<section class="section" id="faq">
   <div class="container faq-wrap">
     <header class="section-head reveal">
       <p class="kicker">{{ m.faq.kicker }}</p>
@@ -300,6 +337,14 @@
         <a class="tile-value" href="tel:{{ c.phone_link }}">{{ c.phone }}</a>
         <span class="tile-note">{{ m.contact.hours }}</span>
       </div>
+      {%- if c.whatsapp %}
+      <div class="tile reveal">
+        <span class="tile-icon">{{ icon('whatsapp') }}</span>
+        <span class="tile-label">WhatsApp</span>
+        <a class="tile-value" href="{{ wa }}" target="_blank" rel="noopener">{{ m.contact.wa_value }}</a>
+        <span class="tile-note">{{ m.contact.wa_note }}</span>
+      </div>
+      {%- endif %}
       <div class="tile reveal">
         <span class="tile-icon">{{ icon('email-outline') }}</span>
         <span class="tile-label">{{ m.contact.email_label }}</span>
@@ -334,9 +379,12 @@
 </footer>
 
 <!-- Pasek szybkich akcji na telefonie -->
-<div class="actionbar" data-actionbar aria-hidden="true">
-  <a class="btn btn-ghost" href="tel:{{ c.phone_link }}" tabindex="-1">{{ icon('phone-outline') }}{{ ui.call }}</a>
-  <a class="btn btn-primary" href="{{ mailto }}" tabindex="-1">{{ icon('email-outline') }}{{ ui.write }}</a>
+<div class="actionbar{% if c.whatsapp %} actionbar-3{% endif %}" data-actionbar aria-hidden="true">
+  <a class="btn btn-ghost" href="tel:{{ c.phone_link }}" tabindex="-1">{{ icon('phone-outline') }}<span>{{ ui.call }}</span></a>
+  {%- if c.whatsapp %}
+  <a class="btn btn-ghost btn-wa" href="{{ wa }}" target="_blank" rel="noopener" tabindex="-1">{{ icon('whatsapp') }}<span>WhatsApp</span></a>
+  {%- endif %}
+  <a class="btn btn-primary" href="{{ mailto }}" tabindex="-1">{{ icon('email-outline') }}<span>{{ ui.write }}</span></a>
 </div>
 
 <div class="toast" role="status" aria-live="polite" data-toast>{{ ui.copied }}</div>

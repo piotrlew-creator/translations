@@ -7,8 +7,8 @@
 # =====================================================================
 template: home.html
 lang: pl
-title: Piotr Lewandowski — tłumacz języka angielskiego | Łódź
-description: Tłumacz języka angielskiego z 20-letnim doświadczeniem. Umowy, dokumenty podatkowe i finansowe, tłumaczenia handlowe, biznesowe i prace naukowe. Bezpłatna wycena.
+title: Tłumacz angielskiego dla firm — umowy, podatki, biznes | Piotr Lewandowski, Łódź
+description: Tłumacz angielskiego dla firm z 20-letnim doświadczeniem. Umowy, dokumenty podatkowe i finansowe, tłumaczenia handlowe i biznesowe. Wycena w 2 godziny, stała współpraca dla firm.
 currency: zł
 
 ui:
@@ -18,6 +18,7 @@ ui:
   nav:
     - { label: Specjalizacje, href: "#specjalizacje" }
     - { label: Cennik, href: "#cennik" }
+    - { label: Dla firm, href: "#dla-firm" }
     - { label: O mnie, href: "#o-mnie" }
     - { label: FAQ, href: "#faq" }
     - { label: Kontakt, href: "#kontakt" }
@@ -26,7 +27,7 @@ ui:
   switch_title: English version
   switch_to: en/
   call: Zadzwoń
-  write: Wyślij plik
+  write: E-mail
   copied: Adres e-mail skopiowany
 
 mail:
@@ -45,20 +46,23 @@ mail:
     Pozdrawiam
 
 hero:
-  eyebrow: Tłumacz języka angielskiego · Łódź i zdalnie
-  title: "Tłumaczenia, na których możesz <em>polegać</em>."
-  lead: "Umowy, dokumenty podatkowe, teksty biznesowe i prace naukowe — z angielskiego na polski i z polskiego na angielski."
+  eyebrow: Łódź · zdalnie w całej Polsce i za granicą
+  title: "Tłumacz angielskiego <em>dla firm</em> — umowy, podatki, biznes"
+  lead: "Precyzyjne tłumaczenia z angielskiego na polski i z polskiego na angielski. 20 lat doświadczenia, faktura VAT, pełna poufność."
   primary: Wyślij plik do wyceny
   trust:
     - 20 lat doświadczenia
-    - Bezpłatna wycena
+    - Wycena w 2 godziny
     - Poufność (NDA)
-    - Faktura
+    - Faktura VAT
 
 card:
   label: Szybki kontakt
   phone_note: Zadzwoń · pon.–pt. 8:00–18:00
   email_note: Napisz lub wyślij plik
+  promise: Wycena w ciągu 2 godzin w dni robocze
+  wa_note: Szybka wiadomość z telefonu
+  wa_text: Dzień dobry, proszę o wycenę tłumaczenia.
   copy: Kopiuj adres
   vcard: Zapisz kontakt w telefonie
 
@@ -89,9 +93,10 @@ services:
 pricing:
   kicker: Cennik
   title: "Przejrzyste <em>stawki</em>"
-  intro: Ceny orientacyjne za stronę rozliczeniową (1800 znaków ze spacjami). Dokładną cenę i termin podaję w bezpłatnej wycenie.
+  intro: Ceny netto za stronę rozliczeniową (1800 znaków ze spacjami) — do cen doliczany jest 23% VAT. Dokładną cenę i termin podaję w bezpłatnej wycenie.
   from: od
-  per: / str.
+  per: netto / str.
+  turnaround: "Do 5 stron — zwykle na następny dzień roboczy"
   cards:
     - { key: en_pl, title: "Angielski → polski", short: "EN → PL" }
     - { key: pl_en, title: "Polski → angielski", short: "PL → EN" }
@@ -109,8 +114,45 @@ pricing:
     chars: znaków
     pages_unit: str.
     result: Orientacyjny koszt
+    net: netto
+    gross: "{gross} brutto (z VAT {vat}%)"
     privacy: Tekst nie jest nigdzie wysyłany — liczenie odbywa się w Twojej przeglądarce.
     cta: Poproś o dokładną wycenę
+
+b2b:
+  kicker: Dla firm
+  title: "Stała współpraca <em>dla firm</em>"
+  intro: Regularnie potrzebujesz tłumaczeń? Zaproponuję stałe warunki, dzięki którym oszczędzasz czas i pieniądze, a dokumenty Twojej firmy są spójne.
+  items:
+    - icon: book-alphabet
+      title: Wspólny glosariusz
+      text: Słownik terminów Twojej firmy — spójne nazewnictwo we wszystkich dokumentach.
+    - icon: rocket-launch-outline
+      title: Priorytetowe terminy
+      text: Zlecenia stałych klientów realizuję w pierwszej kolejności.
+    - icon: calendar-month-outline
+      title: Zbiorcza faktura miesięczna
+      text: Jedna faktura VAT za wszystkie zlecenia z danego miesiąca.
+    - icon: percent-outline
+      title: Rabaty za wolumen
+      text: Niższe stawki przy większej liczbie stron miesięcznie.
+    - icon: file-sign
+      title: Umowa ramowa i NDA
+      text: Gotowe wzory umowy ramowej i umowy o zachowaniu poufności.
+  cta: Zapytaj o warunki współpracy
+  note: Warunki ustalamy indywidualnie, bez zobowiązań.
+  mail_subject: Stała współpraca — zapytanie
+  mail_body: |-
+    Dzień dobry,
+
+    jesteśmy zainteresowani stałą współpracą w zakresie tłumaczeń.
+
+    Firma:
+    Rodzaj dokumentów:
+    Szacunkowa liczba stron miesięcznie:
+    Kierunek (EN→PL / PL→EN):
+
+    Pozdrawiam
 
 process:
   title: Jak zamówić tłumaczenie?
@@ -118,7 +160,7 @@ process:
     - title: Wyślij plik
       text: Mailem, w dowolnym formacie — Word, PDF, Excel, skan.
     - title: Otrzymaj wycenę
-      text: Cena i termin — bezpłatnie i bez zobowiązań.
+      text: Cena i termin w ciągu 2 godzin w dni robocze — bezpłatnie.
     - title: Odbierz tłumaczenie
       text: W formacie i układzie oryginału, gotowe do użycia.
 
@@ -146,18 +188,20 @@ faq:
     - q: Czym jest strona rozliczeniowa?
       a: To 1800 znaków ze spacjami, czyli ok. 250–300 słów. Płacisz za faktyczną ilość tekstu, a nie za liczbę stron w pliku.
     - q: Jak szybko otrzymam tłumaczenie?
-      a: Termin zależy od objętości i stopnia specjalizacji tekstu — zawsze podaję go razem z wyceną, zanim zaczniemy. Pilne zlecenia realizuję w trybie ekspresowym.
+      a: Tekst do 5 stron zwykle oddaję na następny dzień roboczy. Przy większych zleceniach termin podaję razem z wyceną, którą wysyłam w ciągu 2 godzin w dni robocze. Pilne teksty realizuję w trybie ekspresowym.
     - q: Czy wykonujesz tłumaczenia przysięgłe?
       a: Nie. Wykonuję tłumaczenia specjalistyczne (zwykłe), które w większości sytuacji biznesowych w pełni wystarczają. Jeśli sąd lub urząd wymaga tłumaczenia poświadczonego, potrzebny jest tłumacz przysięgły.
     - q: W jakich formatach przyjmujesz pliki?
       a: Word, Excel, PowerPoint, PDF, a także skany i zdjęcia dokumentów. Tłumaczenie oddaję w edytowalnym pliku, z zachowaniem układu oryginału.
     - q: Jak wygląda płatność?
-      a: Przelewem na podstawie faktury. Termin płatności ustalamy przy przyjęciu zlecenia.
+      a: Przelewem na podstawie faktury VAT. Podane ceny są cenami netto — doliczany jest 23% VAT. Stałym klientom mogę wystawiać jedną zbiorczą fakturę miesięczną.
 
 contact:
   kicker: Kontakt
   title: "Porozmawiajmy o <em>Twoim tekście</em>"
-  lead: Wyślij plik — odpowiem z ceną i terminem.
+  lead: Wyślij plik — cenę i termin dostaniesz w ciągu 2 godzin w dni robocze.
+  wa_value: Napisz wiadomość
+  wa_note: Najszybszy kontakt z telefonu
   email_label: E-mail
   phone_label: Telefon
   copy: Kopiuj

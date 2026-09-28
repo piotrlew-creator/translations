@@ -136,7 +136,7 @@ svg{width:1.25em;height:1.25em;fill:currentColor;flex:none}
 .menu-btn[aria-expanded="true"] .menu-lines i:first-child{transform:translateY(4px) rotate(45deg)}
 .menu-btn[aria-expanded="true"] .menu-lines i:last-child{transform:translateY(-4px) rotate(-45deg)}
 
-@media (max-width:1020px){
+@media (max-width:1140px){
   .menu-btn{display:grid}
   .header-cta{display:none}
   .nav{position:fixed;inset:var(--header-h) 0 auto 0;background:var(--bg);border-bottom:1px solid var(--line);
@@ -163,7 +163,7 @@ svg{width:1.25em;height:1.25em;fill:currentColor;flex:none}
 .eyebrow{grid-area:eyebrow;justify-self:start;display:inline-flex;align-items:center;gap:8px;padding:6px 14px 6px 10px;border-radius:999px;background:var(--surface);border:1px solid var(--line);
   font-size:.86rem;font-weight:550;color:var(--muted);box-shadow:var(--shadow-sm);margin:0}
 .eyebrow svg{width:17px;height:17px;color:var(--accent)}
-.hero h1{grid-area:title;font-size:clamp(2.3rem,5.6vw,4.4rem);margin:20px 0 18px;font-weight:450;letter-spacing:-.025em;max-width:15ch}
+.hero h1{grid-area:title;font-size:clamp(2.3rem,5.2vw,4.1rem);margin:20px 0 18px;font-weight:450;letter-spacing:-.025em;max-width:17ch}
 .lead{grid-area:lead;font-size:clamp(1.05rem,1.6vw,1.25rem);color:var(--muted);max-width:34em;line-height:1.6}
 .trust{grid-area:trust;display:flex;flex-wrap:wrap;gap:10px 22px;list-style:none;padding:0;margin:28px 0 0}
 .trust li{display:inline-flex;align-items:center;gap:7px;font-size:.95rem;font-weight:560;color:var(--text)}
@@ -390,4 +390,61 @@ svg{width:1.25em;height:1.25em;fill:currentColor;flex:none}
 @media (max-width:420px){
   .qicon{display:none}
   .qrow{min-height:62px;padding-left:16px}
+}
+
+/* ---------- Obietnica czasu odpowiedzi, WhatsApp ---------- */
+.qpromise{display:flex;align-items:center;justify-content:center;gap:8px;margin:-4px 0 0;font-size:.9rem;font-weight:600;color:var(--ink)}
+.qpromise svg{width:18px;height:18px;color:var(--accent)}
+.qicon-wa{background:rgba(37,211,102,.14);color:#1c9d52}
+@media (prefers-color-scheme:dark){.qicon-wa{color:#4ade80}}
+.qrow-wa:hover{border-color:rgba(37,211,102,.5)}
+.calc-result output{font-size:clamp(2rem,4.4vw,3rem)}
+.calc-gross{font-size:.95rem;font-weight:600;opacity:.9}
+
+/* ---------- Stała współpraca dla firm ---------- */
+.b2b{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(28px,5vw,64px);align-items:center;padding:clamp(28px,5vw,56px);
+  border-radius:28px;background:var(--contact-bg);color:var(--contact-text);position:relative;overflow:hidden;isolation:isolate;box-shadow:var(--shadow-lg)}
+.b2b::before{content:"";position:absolute;inset:0;z-index:-1;
+  background:radial-gradient(60% 70% at 0% 0%,rgba(240,139,110,.26),transparent 70%),radial-gradient(50% 60% at 100% 100%,rgba(217,164,65,.16),transparent 70%)}
+.b2b .kicker{color:#f5a58c}
+.b2b h2{color:#fff;font-size:clamp(1.9rem,4vw,2.8rem);font-weight:450}
+.b2b h2 em{color:#f5a58c}
+.b2b-intro{margin:14px 0 24px;color:rgba(238,241,247,.8);font-size:1.05rem}
+.b2b-note{display:block;margin-top:12px;color:rgba(238,241,247,.6);font-size:.85rem}
+.b2b-list{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.b2b-list li{display:flex;gap:14px;align-items:flex-start;padding:14px 16px;border-radius:16px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1)}
+.b2b-icon{display:grid;place-items:center;width:40px;height:40px;border-radius:12px;background:rgba(245,165,140,.16);color:#f5a58c;flex:none}
+.b2b-icon svg{width:21px;height:21px}
+.b2b-list strong{display:block;color:#fff;font-weight:650}
+.b2b-list p{color:rgba(238,241,247,.72);font-size:.92rem;line-height:1.5}
+
+/* Kontakt: 4 kafelki w siatce 2×2 */
+.contact-tiles{grid-template-columns:repeat(2,1fr)}
+
+/* Pasek akcji z trzema przyciskami */
+@media (max-width:720px){
+  .actionbar-3{grid-template-columns:1fr 1fr 1.2fr;gap:8px;padding-left:12px;padding-right:12px}
+  .actionbar-3 .btn{flex-direction:column;gap:2px;min-height:54px;padding:6px 4px;font-size:.8rem;border-radius:16px}
+  .actionbar-3 .btn svg{width:20px;height:20px}
+  .actionbar .btn-wa svg{color:#1c9d52}
+}
+@media (max-width:1020px){
+  .b2b{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:760px){
+  .contact-tiles{grid-template-columns:1fr}
+}
+@media (max-width:620px){
+  .b2b{padding:24px 18px;border-radius:22px}
+  .b2b .btn{width:100%}
+  .b2b-list li{padding:12px 14px}
+}
+
+@media (max-width:760px){
+  .price{gap:12px}
+  .price-value{white-space:nowrap;flex:none}
+  .price-name{flex:1;min-width:0}
+}
+@media (max-width:620px){
+  .qpromise{font-size:.85rem;text-align:center}
 }

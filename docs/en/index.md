@@ -5,8 +5,8 @@
 # =====================================================================
 template: home.html
 lang: en
-title: Piotr Lewandowski — English–Polish translator | Łódź, Poland
-description: English–Polish and Polish–English translator with 20 years of experience. Contracts, tax and financial documents, business and commercial texts, academic papers. Free quote.
+title: English–Polish translator for business — contracts, tax, commerce | Piotr Lewandowski
+description: English–Polish translator for business with 20 years of experience. Contracts, tax and financial documents, commercial texts. Quote within 2 hours, ongoing cooperation for companies.
 currency: PLN
 
 ui:
@@ -16,6 +16,7 @@ ui:
   nav:
     - { label: Expertise, href: "#specjalizacje" }
     - { label: Rates, href: "#cennik" }
+    - { label: For companies, href: "#dla-firm" }
     - { label: About, href: "#o-mnie" }
     - { label: FAQ, href: "#faq" }
     - { label: Contact, href: "#kontakt" }
@@ -24,7 +25,7 @@ ui:
   switch_title: Wersja polska
   switch_to: ../
   call: Call
-  write: Send a file
+  write: Email
   copied: Email address copied
 
 mail:
@@ -43,20 +44,23 @@ mail:
     Kind regards
 
 hero:
-  eyebrow: English–Polish translator · Łódź, Poland & remote
-  title: "Translations you can <em>rely on</em>."
-  lead: "Contracts, tax documents, business texts and academic papers — from English into Polish and from Polish into English."
+  eyebrow: Łódź, Poland · working remotely worldwide
+  title: "English–Polish translator <em>for business</em> — contracts, tax, commerce"
+  lead: "Accurate translation from English into Polish and from Polish into English. 20 years of experience, VAT invoice, full confidentiality."
   primary: Send a file for a quote
   trust:
     - 20 years of experience
-    - Free quote
+    - Quote within 2 hours
     - Confidentiality (NDA)
-    - Invoice
+    - VAT invoice
 
 card:
   label: Quick contact
   phone_note: Call · Mon–Fri 8:00–18:00 (CET)
   email_note: Email me or send a file
+  promise: Quote within 2 hours on working days
+  wa_note: Quick message from your phone
+  wa_text: Hello, I would like a quote for a translation.
   copy: Copy address
   vcard: Save contact to your phone
 
@@ -87,9 +91,10 @@ services:
 pricing:
   kicker: Rates
   title: "Clear <em>pricing</em>"
-  intro: Indicative rates per standard page (1,800 characters including spaces). You get the exact price and deadline in a free quote.
+  intro: Net rates per standard page (1,800 characters including spaces), plus 23% Polish VAT where applicable. You get the exact price and deadline in a free quote.
   from: from
-  per: / page
+  per: net / page
+  turnaround: "Up to 5 pages — usually the next working day"
   cards:
     - { key: en_pl, title: "English → Polish", short: "EN → PL" }
     - { key: pl_en, title: "Polish → English", short: "PL → EN" }
@@ -107,8 +112,45 @@ pricing:
     chars: characters
     pages_unit: pages
     result: Estimated cost
+    net: net
+    gross: "{gross} gross (incl. {vat}% VAT)"
     privacy: Your text is not sent anywhere — everything is calculated in your browser.
     cta: Ask for an exact quote
+
+b2b:
+  kicker: For companies
+  title: "Ongoing cooperation <em>for companies</em>"
+  intro: Need translations regularly? I'll offer fixed terms that save you time and money and keep your company's documents consistent.
+  items:
+    - icon: book-alphabet
+      title: Shared glossary
+      text: A glossary of your company's terms — consistent wording across all documents.
+    - icon: rocket-launch-outline
+      title: Priority deadlines
+      text: Regular clients' orders always come first.
+    - icon: calendar-month-outline
+      title: Monthly invoicing
+      text: One VAT invoice for all orders in a given month.
+    - icon: percent-outline
+      title: Volume discounts
+      text: Lower rates for higher monthly volumes.
+    - icon: file-sign
+      title: Framework agreement & NDA
+      text: Ready-made framework agreement and non-disclosure agreement.
+  cta: Ask about cooperation terms
+  note: Terms are agreed individually, with no obligation.
+  mail_subject: Ongoing cooperation — enquiry
+  mail_body: |-
+    Hello,
+
+    we are interested in ongoing cooperation on translations.
+
+    Company:
+    Types of documents:
+    Estimated pages per month:
+    Direction (EN→PL / PL→EN):
+
+    Kind regards
 
 process:
   title: How to order a translation
@@ -116,7 +158,7 @@ process:
     - title: Send your file
       text: By email, in any format — Word, PDF, Excel, a scan.
     - title: Get a quote
-      text: Price and deadline — free, with no obligation.
+      text: Price and deadline within 2 hours on working days — free.
     - title: Receive the translation
       text: In the original format and layout, ready to use.
 
@@ -144,18 +186,20 @@ faq:
     - q: What is a standard page?
       a: 1,800 characters including spaces, i.e. approx. 250–300 words. You pay for the actual amount of text, not for the number of pages in the file.
     - q: How quickly will I get my translation?
-      a: It depends on the length and complexity of the text — I always give the deadline together with the quote, before we start. Urgent orders are handled in express mode.
+      a: Texts of up to 5 pages are usually delivered the next working day. For larger jobs I give the deadline together with the quote, which I send within 2 hours on working days. Urgent texts are handled in express mode.
     - q: Do you provide certified (sworn) translations?
       a: No. I provide professional (non-certified) translations, which are fully sufficient in most business situations. If a court or public authority requires a certified translation, you will need a sworn translator.
     - q: Which file formats do you accept?
       a: Word, Excel, PowerPoint, PDF, as well as scans and photos of documents. I deliver an editable file that keeps the original layout.
     - q: How do I pay?
-      a: By bank transfer against an invoice. Payment terms are agreed when the order is accepted.
+      a: By bank transfer against a VAT invoice. Rates are net — 23% Polish VAT is added where applicable. Regular clients can receive one consolidated monthly invoice.
 
 contact:
   kicker: Contact
   title: "Let's talk about <em>your text</em>"
-  lead: Send me your file — I'll reply with a price and a deadline.
+  lead: Send me your file — you'll get a price and a deadline within 2 hours on working days.
+  wa_value: Send a message
+  wa_note: Fastest from your phone
   email_label: Email
   phone_label: Phone
   copy: Copy

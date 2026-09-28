@@ -47,17 +47,19 @@ extra:
     phone: "+48 606 283 131"             # tak, jak ma się wyświetlać
     phone_link: "+48606283131"           # ten sam numer, bez spacji
     city: Łódź
+    whatsapp: "48606283131"              # numer do WhatsApp: kod kraju + numer, bez "+" i spacji; pusty = brak przycisku
     nip: "6631638672"                    # opcjonalnie, np. "725-000-00-00" — pusty = nie pokazuje się
     linkedin: ""                         # opcjonalnie, pełny link do profilu LinkedIn
     photo: ""                            # opcjonalnie: wrzuć zdjęcie do docs/assets/img/ i wpisz np. "assets/img/piotr.jpg"
 
-  # ---------------- ORIENTACYJNE STAWKI (zł za stronę 1800 znaków) --------
+  # ---------------- ORIENTACYJNE STAWKI NETTO (zł za stronę 1800 znaków) --------
   rates:
     en_pl: 45          # angielski → polski         <-- ZMIEŃ na swoje
     pl_en: 55          # polski → angielski         <-- ZMIEŃ na swoje
     proofreading: 25   # korekta / weryfikacja       <-- ZMIEŃ na swoje
     express: 50        # dopłata za tryb ekspresowy, w %
     minimum: 1         # minimalne zamówienie, w stronach rozliczeniowych
+    vat: 23            # stawka VAT doliczana do cen netto, w %
 
   # ---------------- Przełącznik języka ----------------
   alternate:

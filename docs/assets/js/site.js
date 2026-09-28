@@ -66,6 +66,7 @@
     var minimum = parseFloat(calc.getAttribute("data-minimum")) || 0;
     var ta = $("[data-calc-text]", calc), pagesIn = $("[data-calc-pages]", calc), exIn = $("[data-calc-express]", calc);
     var out = $("[data-calc-out]", calc), meta = $("[data-calc-meta]", calc);
+    var grossEl = $("[data-calc-gross]", calc), vat = parseFloat(calc.getAttribute("data-vat")) || 0;
     var nf0 = new Intl.NumberFormat(locale, { maximumFractionDigits: 0 });
     var nf1 = new Intl.NumberFormat(locale, { maximumFractionDigits: 1, minimumFractionDigits: 0 });
     var fromText = false;
@@ -83,10 +84,15 @@
         pages = parseFloat(String(pagesIn.value).replace(",", ".")) || 0;
         meta.textContent = pages ? nf1.format(pages) + " " + meta.getAttribute("data-pages-unit") + " × " + nf0.format(rate) + " " + cur : "";
       }
-      if (!pages) { out.textContent = "—"; return; }
+      if (!pages) { out.textContent = "—"; if (grossEl) grossEl.textContent = ""; return; }
       var billable = Math.max(pages, minimum);
-      var price = billable * rate * (exIn.checked ? 1 + express / 100 : 1);
-      out.textContent = "≈ " + nf0.format(Math.round(price)) + " " + cur;
+      var price = Math.round(billable * rate * (exIn.checked ? 1 + express / 100 : 1));
+      out.textContent = "≈ " + nf0.format(price) + " " + cur + " " + (out.getAttribute("data-net") || "");
+      if (grossEl && vat) {
+        grossEl.textContent = grossEl.getAttribute("data-gross")
+          .replace("{gross}", nf0.format(Math.round(price * (1 + vat / 100))) + " " + cur)
+          .replace("{vat}", vat);
+      }
     };
     ta.addEventListener("input", function () { fromText = ta.value.length > 0; compute(); });
     pagesIn.addEventListener("input", function () { fromText = false; if (ta.value) ta.value = ""; compute(); });
