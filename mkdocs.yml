@@ -9,7 +9,8 @@
 # =====================================================================
 
 site_name: Piotr Lewandowski — tłumacz języka angielskiego
-site_url: https://angielskitlumacz.pl/
+# WERSJA ROBOCZA na GitHub Pages. Po podpięciu domeny zmień na: https://angielskitlumacz.pl/
+site_url: https://piotrlew-creator.github.io/translations/
 site_author: Piotr Lewandowski
 site_description: >-
   Tłumacz języka angielskiego z 20-letnim doświadczeniem. Umowy, dokumenty
@@ -36,6 +37,9 @@ markdown_extensions:
   - md_in_html
 
 extra:
+  # Wersja robocza: nie pokazuj strony w Google. Przy publikacji na domenie zmień na false.
+  noindex: true
+
   # ---------------- DANE KONTAKTOWE (wspólne dla PL i EN) ----------------
   contact:
     name: Piotr Lewandowski
