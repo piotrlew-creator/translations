@@ -15,13 +15,12 @@ ui:
   role: Tłumacz języka angielskiego
   skip: Przejdź do treści
   menu: Menu
-  close: Zamknij
   nav:
     - { label: Specjalizacje, href: "#specjalizacje" }
-    - { label: O mnie, href: "#o-mnie" }
-    - { label: Jak pracuję, href: "#jak-pracuje" }
     - { label: Cennik, href: "#cennik" }
+    - { label: O mnie, href: "#o-mnie" }
     - { label: FAQ, href: "#faq" }
+    - { label: Kontakt, href: "#kontakt" }
   cta: Bezpłatna wycena
   switch_label: EN
   switch_title: English version
@@ -46,99 +45,61 @@ mail:
     Pozdrawiam
 
 hero:
-  eyebrow: Łódź · zdalnie w całej Polsce i za granicą
+  eyebrow: Tłumacz języka angielskiego · Łódź i zdalnie
   title: "Tłumaczenia, na których możesz <em>polegać</em>."
-  lead: "Od 20 lat przekładam umowy, dokumenty podatkowe, teksty biznesowe i prace naukowe — z angielskiego na polski i z polskiego na angielski. Precyzyjnie, poufnie i w terminie."
+  lead: "Umowy, dokumenty podatkowe, teksty biznesowe i prace naukowe — z angielskiego na polski i z polskiego na angielski."
   primary: Wyślij plik do wyceny
-  secondary: Zadzwoń
-  badges:
+  trust:
+    - 20 lat doświadczenia
     - Bezpłatna wycena
-    - Faktura
     - Poufność (NDA)
+    - Faktura
 
-facts:
-  - { value: "20", suffix: "+", label: "lat doświadczenia w tłumaczeniach" }
-  - { value: "2", suffix: "", label: "kierunki: EN → PL i PL → EN" }
-  - { value: "1", suffix: "", label: "osoba od wyceny do gotowego tekstu — bez pośredników" }
-  - { value: "0", suffix: " zł", label: "za wycenę — zawsze bezpłatnie" }
+card:
+  label: Szybki kontakt
+  phone_note: Zadzwoń · pon.–pt. 8:00–18:00
+  email_note: Napisz lub wyślij plik
+  copy: Kopiuj adres
+  vcard: Zapisz kontakt w telefonie
 
 services:
   kicker: Specjalizacje
   title: "Teksty, od których <em>wiele zależy</em>"
-  intro: Tłumaczę dokumenty, w których liczy się każde słowo — dla firm, biur rachunkowych, kancelarii, uczelni i osób prywatnych.
   items:
     - icon: file-sign
       title: Umowy i dokumenty prawne
-      text: Umowy handlowe, NDA, regulaminy, pełnomocnictwa, statuty i dokumenty korporacyjne — z zachowaniem precyzji i terminologii prawniczej.
-      tags: [Umowy, NDA, Regulaminy, Uchwały]
+      text: Umowy, NDA, regulaminy, pełnomocnictwa, statuty.
     - icon: bank-outline
       title: Podatki i finanse
-      text: Interpretacje i opinie podatkowe, sprawozdania finansowe, raporty, korespondencja z urzędami i dokumentacja księgowa.
-      tags: [VAT / CIT, Sprawozdania, Raporty, Audyt]
+      text: Interpretacje, sprawozdania, raporty, pisma do urzędów.
     - icon: handshake-outline
       title: Tłumaczenia handlowe
-      text: Oferty, zapytania ofertowe, specyfikacje, katalogi i korespondencja z kontrahentami — żeby Twoja firma brzmiała profesjonalnie.
-      tags: [Oferty, Korespondencja, Specyfikacje]
+      text: Oferty, specyfikacje, katalogi, korespondencja.
     - icon: briefcase-outline
       title: Biznes i zarządzanie
-      text: Prezentacje, biznesplany, procedury, polityki wewnętrzne, raporty dla zarządu i materiały dla inwestorów.
-      tags: [Prezentacje, Procedury, Biznesplany]
+      text: Prezentacje, biznesplany, procedury, raporty.
     - icon: school-outline
       title: Prace naukowe
-      text: Artykuły do czasopism, abstrakty, rozprawy, wnioski grantowe i recenzje — z dbałością o styl akademicki.
-      tags: [Artykuły, Abstrakty, Granty]
+      text: Artykuły, abstrakty, rozprawy, wnioski grantowe.
     - icon: web
       title: Strony www i marketing
-      text: Treści stron internetowych, broszury, newslettery i opisy produktów — naturalnie brzmiące dla odbiorcy.
-      tags: [Strony www, Broszury, Opisy]
-  more: "Nie widzisz swojego rodzaju tekstu? <a href=\"#kontakt\">Napisz</a> — najpewniej też pomogę."
-
-about:
-  kicker: O mnie
-  title: "Jeden tłumacz. <em>Pełna odpowiedzialność.</em>"
-  photo_alt: Piotr Lewandowski
-  points:
-    - icon: account-tie-outline
-      title: Bez pośredników
-      text: Rozmawiasz bezpośrednio z osobą, która tłumaczy Twój tekst. Szybko i konkretnie.
-    - icon: shield-lock-outline
-      title: Poufność
-      text: Twoje dokumenty są bezpieczne. Na życzenie podpisuję umowę o zachowaniu poufności.
-    - icon: clock-fast
-      title: Terminowość
-      text: Termin ustalamy przed startem — i dotrzymuję go. Pilne teksty w trybie ekspresowym.
-    - icon: receipt-text-outline
-      title: Faktura
-      text: Prowadzę działalność gospodarczą — do każdego zlecenia wystawiam fakturę.
-
-process:
-  kicker: Jak pracuję
-  title: "Cztery proste kroki"
-  steps:
-    - title: Wyślij tekst
-      text: Mailem, w dowolnym formacie — Word, PDF, Excel, PowerPoint, a nawet skan lub zdjęcie.
-    - title: Otrzymaj wycenę
-      text: Bezpłatnie i bez zobowiązań — cena i termin, zwykle jeszcze tego samego dnia.
-    - title: Tłumaczę i sprawdzam
-      text: Przekład, redakcja i końcowa korekta. Każde zdanie czytam co najmniej dwa razy.
-    - title: Odbierz gotowy tekst
-      text: W tym samym formacie i układzie co oryginał — gotowy do podpisu, wysyłki lub publikacji.
+      text: Treści stron, broszury, newslettery, opisy produktów.
+  more: "Inny rodzaj tekstu? <a href=\"#kontakt\">Napisz</a> — najpewniej też pomogę."
 
 pricing:
   kicker: Cennik
   title: "Przejrzyste <em>stawki</em>"
-  intro: Ceny orientacyjne za stronę rozliczeniową, czyli 1800 znaków ze spacjami (ok. 250–300 słów). Dokładną cenę zawsze podaję w bezpłatnej wycenie.
+  intro: Ceny orientacyjne za stronę rozliczeniową (1800 znaków ze spacjami). Dokładną cenę i termin podaję w bezpłatnej wycenie.
   from: od
-  per: / strona
+  per: / str.
   cards:
-    - { key: en_pl, title: "Angielski → polski", text: "Umowy, dokumenty firmowe, raporty, artykuły." }
-    - { key: pl_en, title: "Polski → angielski", text: "Teksty dla kontrahentów, publikacje, strony www." , featured: true }
-    - { key: proofreading, title: "Korekta i weryfikacja", text: "Sprawdzenie istniejącego tłumaczenia lub tekstu po angielsku." }
+    - { key: en_pl, title: "Angielski → polski", short: "EN → PL" }
+    - { key: pl_en, title: "Polski → angielski", short: "PL → EN" }
+    - { key: proofreading, title: "Korekta i weryfikacja", short: "Korekta" }
   express: "Tryb ekspresowy: +{express}%"
   minimum: "Minimalne zlecenie: {minimum} strona"
   calc:
-    title: Szybki kalkulator
-    lead: Wklej tekst lub wpisz liczbę stron — policzę orientacyjny koszt.
+    summary: Policz orientacyjny koszt swojego tekstu
     direction: Usługa
     paste: Wklej tekst
     paste_ph: Wklej tutaj fragment lub cały dokument…
@@ -151,35 +112,57 @@ pricing:
     privacy: Tekst nie jest nigdzie wysyłany — liczenie odbywa się w Twojej przeglądarce.
     cta: Poproś o dokładną wycenę
 
+process:
+  title: Jak zamówić tłumaczenie?
+  steps:
+    - title: Wyślij plik
+      text: Mailem, w dowolnym formacie — Word, PDF, Excel, skan.
+    - title: Otrzymaj wycenę
+      text: Cena i termin — bezpłatnie i bez zobowiązań.
+    - title: Odbierz tłumaczenie
+      text: W formacie i układzie oryginału, gotowe do użycia.
+
+about:
+  kicker: O mnie
+  title: "Jeden tłumacz. <em>Pełna odpowiedzialność.</em>"
+  points:
+    - icon: account-tie-outline
+      title: Bez pośredników
+      text: Rozmawiasz z osobą, która tłumaczy Twój tekst.
+    - icon: shield-lock-outline
+      title: Poufność
+      text: Na życzenie podpisuję umowę NDA.
+    - icon: clock-fast
+      title: Terminowość
+      text: Termin ustalamy przed startem — i dotrzymuję go.
+    - icon: receipt-text-outline
+      title: Faktura
+      text: Do każdego zlecenia wystawiam fakturę.
+
 faq:
   kicker: Pytania i odpowiedzi
   title: "Warto <em>wiedzieć</em>"
-  cta: Nie znalazłeś odpowiedzi? Napisz lub zadzwoń — chętnie pomogę.
   items:
     - q: Czym jest strona rozliczeniowa?
-      a: To 1800 znaków ze spacjami, czyli ok. 250–300 słów. Dzięki temu cena nie zależy od wielkości czcionki czy marginesów — płacisz za faktyczną ilość tekstu.
+      a: To 1800 znaków ze spacjami, czyli ok. 250–300 słów. Płacisz za faktyczną ilość tekstu, a nie za liczbę stron w pliku.
     - q: Jak szybko otrzymam tłumaczenie?
       a: Termin zależy od objętości i stopnia specjalizacji tekstu — zawsze podaję go razem z wyceną, zanim zaczniemy. Pilne zlecenia realizuję w trybie ekspresowym.
     - q: Czy wykonujesz tłumaczenia przysięgłe?
-      a: Nie. Specjalizuję się w tłumaczeniach specjalistycznych (zwykłych), które w większości sytuacji biznesowych w pełni wystarczają. Jeśli sąd lub urząd wymaga tłumaczenia poświadczonego, potrzebny jest tłumacz przysięgły.
+      a: Nie. Wykonuję tłumaczenia specjalistyczne (zwykłe), które w większości sytuacji biznesowych w pełni wystarczają. Jeśli sąd lub urząd wymaga tłumaczenia poświadczonego, potrzebny jest tłumacz przysięgły.
     - q: W jakich formatach przyjmujesz pliki?
-      a: Word, Excel, PowerPoint, PDF, a także skany i zdjęcia dokumentów. Gotowe tłumaczenie oddaję w edytowalnym pliku, z zachowaniem układu oryginału.
-    - q: Czy moje dokumenty są bezpieczne?
-      a: Tak. Wszystkie materiały traktuję jako poufne i nie przekazuję ich osobom trzecim. Na życzenie podpisuję umowę o zachowaniu poufności (NDA).
+      a: Word, Excel, PowerPoint, PDF, a także skany i zdjęcia dokumentów. Tłumaczenie oddaję w edytowalnym pliku, z zachowaniem układu oryginału.
     - q: Jak wygląda płatność?
       a: Przelewem na podstawie faktury. Termin płatności ustalamy przy przyjęciu zlecenia.
-    - q: Czy tłumaczysz także inne języki?
-      a: Nie — pracuję wyłącznie z językiem angielskim. Dzięki temu mogę zagwarantować najwyższą jakość.
 
 contact:
   kicker: Kontakt
   title: "Porozmawiajmy o <em>Twoim tekście</em>"
-  lead: Najszybciej — wyślij plik mailem. Odpowiem z ceną i terminem.
+  lead: Wyślij plik — odpowiem z ceną i terminem.
   email_label: E-mail
   phone_label: Telefon
   copy: Kopiuj
   vcard: Zapisz kontakt w telefonie
-  hours: "Pon.–pt. 8:00–18:00 · pilne sprawy także w weekend"
+  hours: "Pon.–pt. 8:00–18:00"
   location: "Łódź · pracuję zdalnie z klientami z całej Polski i zagranicy"
 
 footer:
@@ -193,8 +176,6 @@ footer:
   **pogrubienie** działa tak jak w Wordzie z gwiazdkami.
 -->
 
-Nazywam się **Piotr Lewandowski** i od ponad 20 lat zajmuję się tłumaczeniami języka angielskiego. Pracuję z tekstami, w których liczy się każde słowo: umowami, dokumentami podatkowymi i finansowymi, korespondencją handlową oraz publikacjami naukowymi.
+Nazywam się **Piotr Lewandowski** i od 20 lat tłumaczę teksty, w których liczy się każde słowo: umowy, dokumenty podatkowe i finansowe, korespondencję handlową oraz publikacje naukowe.
 
-Prowadzę własną działalność w Łodzi i współpracuję zdalnie z klientami z całej Polski i z zagranicy. Każde zlecenie wykonuję osobiście — od pierwszej wiadomości aż po oddanie gotowego tekstu.
-
-Dobre tłumaczenie to nie tylko poprawne słowa. To tekst, który brzmi naturalnie, zachowuje sens oryginału i spełnia swój cel — czy to podpisanie umowy, zamknięcie transakcji, czy publikacja w międzynarodowym czasopiśmie.
+Prowadzę własną działalność w Łodzi i pracuję zdalnie z klientami z całej Polski i z zagranicy. Każde zlecenie wykonuję osobiście — od wyceny do oddania gotowego tekstu.

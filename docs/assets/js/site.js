@@ -56,27 +56,6 @@
     reveals.forEach(function (el) { el.classList.add("is-in"); });
   }
 
-  /* --- Liczniki w pasku z liczbami --- */
-  if (!reduce && "IntersectionObserver" in window) {
-    var co = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) {
-        if (!en.isIntersecting) return;
-        var el = en.target, end = parseInt(el.getAttribute("data-count"), 10), t0 = null;
-        co.unobserve(el);
-        if (!(end > 1)) return;
-        var step = function (t) {
-          if (!t0) t0 = t;
-          var p = Math.min((t - t0) / 1200, 1);
-          el.textContent = Math.round(end * (1 - Math.pow(1 - p, 3)));
-          if (p < 1) requestAnimationFrame(step);
-        };
-        el.textContent = "0";
-        requestAnimationFrame(step);
-      });
-    }, { threshold: 0.6 });
-    $$("[data-count]").forEach(function (el) { co.observe(el); });
-  }
-
   /* --- Kalkulator --- */
   var calc = $("[data-calc]");
   if (calc) {
@@ -98,7 +77,7 @@
       if (fromText) {
         var chars = ta.value.replace(/\r\n/g, "\n").length;
         pages = chars / 1800;
-        pagesIn.value = pages ? (Math.round(pages * 10) / 10) : "";
+        pagesIn.value = pages ? nf1.format(Math.round(pages * 10) / 10) : "";
         meta.textContent = chars ? nf0.format(chars) + " " + meta.getAttribute("data-chars") + " ≈ " + nf1.format(pages) + " " + meta.getAttribute("data-pages-unit") : "";
       } else {
         pages = parseFloat(String(pagesIn.value).replace(",", ".")) || 0;
