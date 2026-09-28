@@ -43,11 +43,11 @@ extra:
   # ---------------- DANE KONTAKTOWE (wspólne dla PL i EN) ----------------
   contact:
     name: Piotr Lewandowski
-    email: kontakt@angielskitlumacz.pl    # adres przekierowany przez Cloudflare Email Routing na Twój Gmail
-    phone: "+48 600 000 000"             # <-- ZMIEŃ (tak, jak ma się wyświetlać)
-    phone_link: "+48600000000"           # <-- ZMIEŃ (ten sam numer, bez spacji)
+    email: piotrlew@gmail.com            # adres widoczny na stronie
+    phone: "+48 606 283 131"             # tak, jak ma się wyświetlać
+    phone_link: "+48606283131"           # ten sam numer, bez spacji
     city: Łódź
-    nip: ""                              # opcjonalnie, np. "725-000-00-00" — pusty = nie pokazuje się
+    nip: "6631638672"                    # opcjonalnie, np. "725-000-00-00" — pusty = nie pokazuje się
     linkedin: ""                         # opcjonalnie, pełny link do profilu LinkedIn
     photo: ""                            # opcjonalnie: wrzuć zdjęcie do docs/assets/img/ i wpisz np. "assets/img/piotr.jpg"
 
